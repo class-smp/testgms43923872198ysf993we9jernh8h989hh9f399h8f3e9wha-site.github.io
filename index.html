@@ -10,6 +10,54 @@
 
   gtag('config', 'G-R1ZCLH6XCR');
 </script>
+<style>
+	.password-container {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            animation: fadeIn 1s;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .password-input {
+            padding: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 80%;
+            margin-bottom: 1rem;
+        }
+
+        .submit-button {
+            padding: 1rem;
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .submit-button:hover {
+            background: #0056b3;
+        }
+
+        .error-message {
+            color: red;
+            margin-top: 1rem;
+        }
+</style>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2694073837597977"
      crossorigin="anonymous"></script>
 	<link rel="stylesheet" href="styles.css">
@@ -22,6 +70,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   </head> 
   <body onload="startTime()">
+
+	  <div class="password-container" id="password-container">
+        <h2>Please Enter the Password</h2>
+        <input type="password" id="password-input" class="password-input" placeholder="Password" />
+        <button class="submit-button" onclick="checkPassword()">Submit</button>
+        <p id="error-message" class="error-message"></p>
+    </div>
   
   <div class="menubar">
   <div class="topnav">
@@ -37,6 +92,21 @@
   </div>
   </div>
   </div>
+
+<script>
+        function checkPassword() {
+            const password = document.getElementById("password-input").value;
+            const correctPassword = "you wontfindthis";
+            const errorMessage = document.getElementById("error-message");
+
+            if (password === correctPassword) {
+                alert("Access Granted!");
+                window.location.href = "index.html"; // Redirect to the games page
+            } else {
+                errorMessage.textContent = "Incorrect password. Please try again.";
+            }
+        }
+    </script>
   
   <div class="dropdown">
   <button class="dropbtn">Tile Size</button>
