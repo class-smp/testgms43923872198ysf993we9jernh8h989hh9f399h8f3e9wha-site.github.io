@@ -1,0 +1,239 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  <meta name="google-adsense-account" content="ca-pub-7223307426689438">
+  <title>Google</title>
+  <link rel="icon" type="image/x-icon" href="/imgs/google.jpg">
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@700&display=swap">
+  <link rel="stylesheet" type="text/css" href="css/all.min.css">
+  <style>
+    body {
+      background-color: #2c2c2c;
+      font-family: 'Source Sans Pro', sans-serif;
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #loginForm {
+      background-color: #1f1f1f;
+      padding: 30px 40px;
+      border-radius: 10px;
+      box-shadow: 0 0 20px #00ffcc;
+      text-align: center;
+      border: 4px solid #44ff44;
+    }
+
+    label {
+      color: #ffffff;
+      font-size: 18px;
+      margin-bottom: 10px;
+      display: block;
+    }
+
+    input[type="password"] {
+      width: 250px;
+      padding: 12px;
+      font-size: 16px;
+      border: 2px solid #dddddd;
+      border-radius: 5px;
+      margin-bottom: 15px;
+      font-weight: bold;
+      text-align: center;
+    }
+
+    input[type="button"] {
+      background-color: #e6c51d;
+      color: black;
+      border: none;
+      font-size: 16px;
+      font-weight: bold;
+      padding: 12px 30px;
+      text-transform: uppercase;
+      box-shadow: 4px 4px 0 #888888;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      border-radius: 0;
+    }
+
+    input[type="button"]:hover {
+      background-color: #d1b419;
+      box-shadow: 2px 2px 0 #666666;
+    }
+
+    #message {
+      margin-top: 15px;
+      font-size: 16px;
+      font-weight: bold;
+      display: none;
+    }
+
+    .error {
+      color: #ff4d4d;
+    }
+
+    .success {
+      color: #00ff88;
+    }
+
+    .section, .nembed-container {
+      display: none;
+    }
+
+    .nembed-container {
+      width: 100%;
+      height: 90vh;
+    }
+
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    .section {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin: 10px 0;
+    }
+
+    .section button {
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+
+    #gms {
+      width: 30px;
+      height: 30px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Login Form -->
+  <form id="loginForm">
+    <label for="pswd">Password required to access</label>
+    <input type="password" id="pswd" placeholder="Enter password" />
+    <br />
+    <input type="button" value="PLAY" onclick="checkPswd();" />
+    <div id="message"></div>
+  </form>
+
+  <!-- Game Embed Section (hidden until granted) -->
+  <div class="nembed-container" id="gameContainer">
+    <iframe id="myIframe" frameborder="0"></iframe>
+  </div>
+
+  <div class="section" id="controls">
+    <button id="notes">
+      <a href='/apps'>
+        <img id="gms" src="imgs/gamepad-solid.png">
+      </a>
+    </button>
+    <button id="refreshBtn"><img id="gms" src="imgs/rotate-right-solid.png"></button>
+    <button id="fullscreenBtn"><img id="gms" src="imgs/expand-solid.png"></button>
+    <button id="dangerBtn"><img id="gms" src="imgs/danger-icon-solid.png"></button>
+  </div>
+
+  <script>
+    // i rlly hope this actually shows bro
+//alert("Well, it's almost time for the end of the year. It was a long ride. 3 different teachers in one school year, man that is a LOT!! This school year was so fun, and I would like to thank you, well if you are seeing this, thank you. Thank you for being a friend. Thank you for being someone I trust enough to give this PROXY website. Now imma tell you one thing. To even have access to this proxy from me is already proof that I trust you enough not to leak this and use it wisely. See you next year and HAPPY SUMMER!!")
+    // LESS GOO
+    function checkPswd() {
+      const correctPassword = "hello";
+      const password = document.getElementById("pswd").value;
+      const messageDiv = document.getElementById("message");
+
+      if (password === correctPassword) {
+        messageDiv.textContent = "Granted";
+        messageDiv.className = "success";
+        messageDiv.style.display = "block";
+
+        setTimeout(() => {
+          document.getElementById("loginForm").style.display = "none";
+          document.getElementById("gameContainer").style.display = "block";
+          document.getElementById("controls").style.display = "flex";
+          loadIframe();
+        }, 1000);
+      } else {
+        messageDiv.textContent = "Wrong password!";
+        messageDiv.className = "error";
+        messageDiv.style.display = "block";
+      }
+    }
+
+    const iframe = document.getElementById('myIframe');
+    const urlParams = new URLSearchParams(window.location.search);
+    const embeddedUrl = urlParams.get('url');
+    const blockedExtensions = ['.css', '.js', '.json', '.txt', '.xml', '.php', "js", "css"];
+
+    function isBlocked(url) {
+      return blockedExtensions.some(ext => url.endsWith(ext));
+    }
+
+    function handleIframeError() {
+      //iframe.src = "/blocked.html"; // or a 404 page
+    }
+
+    function loadIframe() {
+      if (embeddedUrl) {
+        if (isBlocked(embeddedUrl)) {
+          iframe.src = "https://math181124.github.io/g9/class-582/";
+        } else {
+          iframe.src = "https://math181124.github.io/g9/class-582/";
+        }
+      }
+    }
+
+    iframe.onload = function () {
+      try {
+        const iframeDocument = iframe.contentDocument || iframe.contentWindow.document;
+        if (iframeDocument.body.innerText.includes("Cannot GET")) {
+          handleIframeError();
+        }
+      } catch (e) {
+        handleIframeError();
+      }
+    };
+
+    iframe.onerror = function () {
+      handleIframeError();
+    };
+
+    function confirmExit() {
+      const confirmation = confirm("Are you sure you want to activate Emergency Redirect?\nGame progress may be lost.");
+      if (confirmation) {
+        window.location.href = "https://classroom.google.com";
+      }
+    }
+
+    document.getElementById('fullscreenBtn').addEventListener('click', () => {
+      if (iframe.requestFullscreen) iframe.requestFullscreen();
+      else if (iframe.mozRequestFullScreen) iframe.mozRequestFullScreen();
+      else if (iframe.webkitRequestFullscreen) iframe.webkitRequestFullscreen();
+      else if (iframe.msRequestFullscreen) iframe.msRequestFullscreen();
+    });
+
+    document.getElementById('refreshBtn').addEventListener('click', () => {
+      iframe.contentWindow.location.reload();
+    });
+
+    document.getElementById('dangerBtn').addEventListener('click', () => {
+      confirmExit();
+    });
+  </script>
+
+  <script src="js/2cd4f3f683cfe8d1431755e9ef6782f4.js"></script>
+</body>
+</html>
