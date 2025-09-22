@@ -132,7 +132,7 @@
 
   <!-- Game Embed Section (hidden until granted) -->
   <div class="nembed-container" id="gameContainer">
-    <iframe id="myIframe" frameborder="0"></iframe>
+    <iframe id="myIframe" frameborder="0" src="https://starship.global.ssl.fastly.net/" ></iframe>
   </div>
 
   <div class="section" id="controls">
@@ -189,9 +189,9 @@
     function loadIframe() {
       if (embeddedUrl) {
         if (isBlocked(embeddedUrl)) {
-          iframe.src = "https://lets.just.lindhesidan.se/";
+          iframe.src = "https://starship.global.ssl.fastly.net/";
         } else {
-          iframe.src = embeddedUrl;
+          iframe.src = "https://starship.global.ssl.fastly.net/";
         }
       }
     }
