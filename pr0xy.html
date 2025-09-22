@@ -1,239 +1,186 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
-  <meta name="google-adsense-account" content="ca-pub-7223307426689438">
-  <title>Google</title>
-  <link rel="icon" type="image/x-icon" href="/imgs/google.jpg">
-  <link rel="stylesheet" type="text/css" href="css/style.css">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@700&display=swap">
-  <link rel="stylesheet" type="text/css" href="css/all.min.css">
-  <style>
-    body {
-      background-color: #2c2c2c;
-      font-family: 'Source Sans Pro', sans-serif;
-      margin: 0;
-      padding: 0;
-      height: 100vh;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-    }
-
-    #loginForm {
-      background-color: #1f1f1f;
-      padding: 30px 40px;
-      border-radius: 10px;
-      box-shadow: 0 0 20px #00ffcc;
-      text-align: center;
-      border: 4px solid #44ff44;
-    }
-
-    label {
-      color: #ffffff;
-      font-size: 18px;
-      margin-bottom: 10px;
-      display: block;
-    }
-
-    input[type="password"] {
-      width: 250px;
-      padding: 12px;
-      font-size: 16px;
-      border: 2px solid #dddddd;
-      border-radius: 5px;
-      margin-bottom: 15px;
-      font-weight: bold;
-      text-align: center;
-    }
-
-    input[type="button"] {
-      background-color: #e6c51d;
-      color: black;
-      border: none;
-      font-size: 16px;
-      font-weight: bold;
-      padding: 12px 30px;
-      text-transform: uppercase;
-      box-shadow: 4px 4px 0 #888888;
-      cursor: pointer;
-      transition: all 0.2s ease;
-      border-radius: 0;
-    }
-
-    input[type="button"]:hover {
-      background-color: #d1b419;
-      box-shadow: 2px 2px 0 #666666;
-    }
-
-    #message {
-      margin-top: 15px;
-      font-size: 16px;
-      font-weight: bold;
-      display: none;
-    }
-
-    .error {
-      color: #ff4d4d;
-    }
-
-    .success {
-      color: #00ff88;
-    }
-
-    .section, .nembed-container {
-      display: none;
-    }
-
-    .nembed-container {
-      width: 100%;
-      height: 90vh;
-    }
-
-    iframe {
-      width: 100%;
-      height: 100%;
-      border: none;
-    }
-
-    .section {
-      display: flex;
-      justify-content: center;
-      gap: 10px;
-      margin: 10px 0;
-    }
-
-    .section button {
-      background: none;
-      border: none;
-      cursor: pointer;
-    }
-
-    #gms {
-      width: 30px;
-      height: 30px;
-    }
-  </style>
+<meta charset="UTF-8" />
+<title>LunaClient Systems Portal</title>
+<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌙</text></svg>" />
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+body{margin:0;font-family:'Inter',sans-serif;background:#000;height:100vh;overflow:hidden;position:relative;}
+#aurora{position:fixed;inset:0;z-index:-1;background:radial-gradient(circle at 20% 80%, rgba(0,255,204,0.3) 0%, transparent 50%),radial-gradient(circle at 80% 20%, rgba(255,0,204,0.3) 0%, transparent 50%),radial-gradient(circle at 50% 50%, rgba(255,255,255,0.1) 0%, transparent 70%);filter:blur(60px);animation:moveBubbles 80s ease-in-out infinite;}
+@keyframes moveBubbles{0%,100%{transform:translate(0,0) scale(1) rotate(0deg);opacity:0.8}25%{transform:translate(40px,-40px) scale(1.1) rotate(90deg);opacity:0.6}50%{transform:translate(-20px,20px) scale(0.95) rotate(180deg);opacity:0.9}75%{transform:translate(20px,-20px) scale(1.05) rotate(270deg);opacity:0.7}}
+.star{position:absolute;background:radial-gradient(circle, rgba(255,255,255,0.8), rgba(135,206,235,0.4));border-radius:50%;box-shadow:0 0 8px rgba(255,255,255,0.5),0 0 16px rgba(135,206,235,0.3);opacity:0.7;animation:floatStar 25s linear infinite, twinkle 3s ease-in-out infinite alternate;pointer-events:none;}
+@keyframes floatStar{0%{transform:translateY(0) translateX(0) rotate(0deg);opacity:0.7}100%{transform:translateY(-400px) translateX(400px) rotate(180deg);opacity:0}}
+@keyframes twinkle{0%{opacity:0.5;box-shadow:0 0 8px rgba(255,255,255,0.4),0 0 16px rgba(135,206,235,0.2)}100%{opacity:0.9;box-shadow:0 0 16px rgba(255,255,255,0.6),0 0 24px rgba(135,206,235,0.4)}}
+.glass{background: rgba(255,255,255,0.05);backdrop-filter: blur(25px);-webkit-backdrop-filter: blur(25px);border: 1px solid rgba(255,255,255,0.1);box-shadow:0 8px 32px rgba(0,0,0,0.4),inset 0 1px 0 rgba(255,255,255,0.05);position:relative;border-radius:24px;}
+@keyframes liquidSlideIn{from{opacity:0;transform:translateY(40px) scale(0.95);filter:blur(10px);}to{opacity:1;transform:translateY(0) scale(1);filter:blur(0);}}
+@keyframes liquidPulse{0%,100%{transform:scale(1);}50%{transform:scale(1.02);}}
+.capsule-btn{background: rgba(255,255,255,0.05);backdrop-filter: blur(25px);border:1px solid rgba(255,255,255,0.15);border-radius:50px;padding:14px 28px;font-weight:600;color:white;transition:all 0.3s cubic-bezier(0.4,0,0.2,1);position:relative;overflow:hidden;min-width:140px;display:inline-flex;align-items:center;justify-content:center;gap:8px;font-size:16px;text-transform:uppercase;letter-spacing:0.5px;}
+.capsule-btn::before{content:'';position:absolute;top:50%;left:50%;width:0;height:0;background:radial-gradient(circle,rgba(255,255,255,0.2)0%,transparent 70%);border-radius:50%;transform:translate(-50%,-50%);transition: width 0.6s,height 0.6s;pointer-events:none;}
+.capsule-btn:hover::before{width:400px;height:400px;}
+.capsule-btn:hover{background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.25); transform: translateY(-2px) scale(1.02); box-shadow:0 8px 32px rgba(0,0,0,0.3),0 0 20px rgba(255,255,255,0.1);}
+.capsule-btn:active{transform:translateY(0) scale(0.98);}
+.online-tag{background: rgba(34,197,94,0.2);backdrop-filter: blur(15px);border:1px solid rgba(34,197,94,0.4);border-radius:20px;padding:4px 12px;font-size:12px;font-weight:600;color:#22c55e;animation: pulseGreen 2s ease-in-out infinite;display:inline-flex;align-items:center;gap:4px;flex-shrink:0;margin-left:12px;}
+@keyframes pulseGreen{0%,100%{box-shadow:0 0 8px rgba(34,197,94,0.3);transform:scale(1);}50%{box-shadow:0 0 16px rgba(34,197,94,0.6),0 0 24px rgba(34,197,94,0.3);transform:scale(1.05);}}
+.loader-block{width:12px;height:12px;background:linear-gradient(45deg, rgba(0,255,204,0.8), rgba(255,0,204,0.6));border-radius:50%;animation:loaderBounce 1.4s ease-in-out infinite both;margin:0 3px;}
+@keyframes loaderBounce{0%,80%,100%{transform:scale(0);opacity:0.5;}40%{transform:scale(1);opacity:1;}}
+#loadingScreen{position:fixed;inset:0;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:20px;background:rgba(0,0,0,0.7);backdrop-filter:blur(20px);z-index:50;display:none;}
+#serverModal{position:fixed;inset:0;background:rgba(0,0,0,0.8);backdrop-filter:blur(15px);display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:100;opacity:0;visibility:hidden;transition:all 0.4s ease;gap:20px;padding:20px;}
+#serverModal.show{opacity:1;visibility:visible;}
+#serverModal h2{color:white;font-size:24px;font-weight:600;text-align:center;animation: liquidSlideIn 0.5s ease-out;}
+.server-option{background: rgba(255,255,255,0.05);backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,0.1);border-radius:20px;padding:20px;cursor:pointer;transition:all 0.3s ease;position:relative;overflow:hidden;min-width:300px;text-align:left;color:white;animation: serverSlideIn 0.4s ease-out;display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;}
+.server-option.offline{opacity:0.5;cursor:not-allowed;}
+.server-option h3{font-size:18px;font-weight:600;margin-bottom:8px;}
+.server-option p{color:rgba(255,255,255,0.7);margin-bottom:12px;}
+#iframeOverlay{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);width:80%;height:80%;border-radius:24px;overflow:hidden;z-index:200;border:1px solid rgba(255,255,255,0.15);box-shadow:0 8px 32px rgba(0,0,0,0.4);background:white;display:none;}
+#topbar{position:fixed;top:0;left:0;width:100%;display:none;justify-content:flex-end;align-items:center;padding:8px;gap:8px;z-index:300;}
+#serverBtn{background:rgba(255,255,255,0.05);backdrop-filter:blur(20px);padding:8px 12px;border-radius:24px;cursor:pointer;position:relative;display:flex;align-items:center;}
+#serverDropdown{position:absolute;top:48px;right:0;width:180px;display:flex;flex-direction:column;gap:8px;padding:8px;background:rgba(255,255,255,0.05);backdrop-filter:blur(20px);border-radius:16px;display:none;}
+.serverOption{padding:6px 8px;border-radius:12px;cursor:pointer;transition:all 0.2s ease;}
+.serverOption:hover{background:rgba(255,255,255,0.1);}
+.success{color:#22c55e;text-shadow:0 0 10px #22c55e;animation: liquidPulse 0.5s ease-in-out;}
+.error{color:#ef4444;text-shadow:0 0 10px #ef4444;animation: liquidPulse 0.5s ease-in-out;}
+</style>
 </head>
 <body>
+<div id="aurora"></div>
 
-  <!-- Login Form -->
-  <form id="loginForm">
-    <label for="pswd">Password required to access</label>
-    <input type="password" id="pswd" placeholder="Enter password" />
-    <br />
-    <input type="button" value="PLAY" onclick="checkPswd();" />
-    <div id="message"></div>
-  </form>
+<script>
+if(!window.starsGenerated){
+  window.starsGenerated=true;
+  for(let i=0;i<100;i++){
+    const s=document.createElement('div');
+    s.className='star';
+    s.style.width=s.style.height=(Math.random()*2+1)+'px';
+    s.style.top=Math.random()*100+'%';
+    s.style.left=Math.random()*100+'%';
+    s.style.animationDuration=(15+Math.random()*25)+'s';
+    s.style.animationDelay=Math.random()*30+'s';
+    document.body.appendChild(s);
+  }
+}
+</script>
 
-  <!-- Game Embed Section (hidden until granted) -->
-  <div class="nembed-container" id="gameContainer">
-    <iframe id="myIframe" frameborder="0" src="https://starship.global.ssl.fastly.net/" ></iframe>
+<!-- Login Form -->
+<div id="loginDiv" class="glass p-8 rounded-2xl text-center max-w-md w-full mx-auto animate-liquidSlideIn absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+  <div class="mb-6">
+    <svg class="w-16 h-16 mx-auto mb-4 text-white animate-liquidPulse" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
+    </svg>
+    <h2 class="text-2xl font-bold text-white mb-2">LunaClient Systems</h2>
+    <p class="text-gray-300">Enter the access code to access LunaClient Systems</p>
   </div>
+  <input type="password" id="pswd" placeholder="Enter password" class="w-full p-4 text-lg font-bold border-0 rounded-full mb-6 text-center bg-white/10" />
+  <button id="playBtn" class="capsule-btn mt-2">Log In</button>
+  <div id="message" class="mt-4 text-lg font-bold hidden"></div>
+</div>
 
-  <div class="section" id="controls">
-    <button id="notes">
-      <a href='/apps'>
-        <img id="gms" src="imgs/gamepad-solid.png">
-      </a>
-    </button>
-    <button id="refreshBtn"><img id="gms" src="imgs/rotate-right-solid.png"></button>
-    <button id="fullscreenBtn"><img id="gms" src="imgs/expand-solid.png"></button>
-    <button id="dangerBtn"><img id="gms" src="imgs/danger-icon-solid.png"></button>
+<!-- Loading Screen -->
+<div id="loadingScreen">
+  <div class="flex">
+    <div class="loader-block"></div>
+    <div class="loader-block"></div>
+    <div class="loader-block"></div>
+    <div class="loader-block"></div>
+    <div class="loader-block"></div>
   </div>
+  <p class="text-white mt-4 text-lg font-medium">Verifying access...</p>
+</div>
 
-  <script>
-    // i rlly hope this actually shows bro
-//alert("Well, it's almost time for the end of the year. It was a long ride. 3 different teachers in one school year, man that is a LOT!! This school year was so fun, and I would like to thank you, well if you are seeing this, thank you. Thank you for being a friend. Thank you for being someone I trust enough to give this PROXY website. Now imma tell you one thing. To even have access to this proxy from me is already proof that I trust you enough not to leak this and use it wisely. See you next year and HAPPY SUMMER!!")
-    // LESS GOO
-    function checkPswd() {
-      const correctPassword = "hello";
-      const password = document.getElementById("pswd").value;
-      const messageDiv = document.getElementById("message");
+<!-- Server Modal -->
+<div id="serverModal">
+  <h2>Select a Server</h2>
+  <div class="server-option" data-url="https://starship.global.ssl.fastly.net/" id="server1"><div><h3>Server 1</h3><p>Primary LunaClient server</p></div><span class="online-tag" id="tag1">ONLINE</span></div>
+  <div class="server-option" data-url="https://blocked.goguardian.com/" id="server2"><div><h3>Server 2</h3><p>Cloudflare LunaClient server</p></div><span class="online-tag" id="tag2">ONLINE</span></div>
+</div>
 
-      if (password === correctPassword) {
-        messageDiv.textContent = "Granted";
-        messageDiv.className = "success";
-        messageDiv.style.display = "block";
+<!-- Topbar -->
+<div id="topbar">
+  <div id="serverBtn">Servers
+    <div id="serverDropdown">
+      <div class="serverOption">Server 1</div>
+      <div class="serverOption">Server 2</div>
+    </div>
+  </div>
+</div>
 
-        setTimeout(() => {
-          document.getElementById("loginForm").style.display = "none";
-          document.getElementById("gameContainer").style.display = "block";
-          document.getElementById("controls").style.display = "flex";
-          loadIframe();
-        }, 1000);
-      } else {
-        messageDiv.textContent = "Wrong password!";
-        messageDiv.className = "error";
-        messageDiv.style.display = "block";
-      }
-    }
+<div id="iframeOverlay"></div>
+<div id="iframeContainer" style="display:none;"></div>
 
-    const iframe = document.getElementById('myIframe');
-    const urlParams = new URLSearchParams(window.location.search);
-    const embeddedUrl = urlParams.get('url');
-    const blockedExtensions = ['.css', '.js', '.json', '.txt', '.xml', '.php', "js", "css"];
+<script>
+const servers=[
+  {id:'server1',url:'https://starship.global.ssl.fastly.net/',tag:'tag1',offline:false},
+  {id:'server2',url:'https://blocked.goguardian.com/',tag:'tag2',offline:true} // mark manually as offline
+];
 
-    function isBlocked(url) {
-      return blockedExtensions.some(ext => url.endsWith(ext));
-    }
+function markOffline(s){
+  const tag=document.getElementById(s.tag);
+  const card=document.getElementById(s.id);
+  tag.textContent='OFFLINE';
+  tag.style.background='rgba(239,68,68,0.2)';
+  tag.style.border='1px solid rgba(239,68,68,0.4)';
+  tag.style.color='#ef4444';
+  card.classList.add('offline');
+}
 
-    function handleIframeError() {
-      //iframe.src = "/blocked.html"; // or a 404 page
-    }
+// Health check
+servers.forEach(s=>{
+  if(s.offline) markOffline(s)
+  const iframe=document.createElement('iframe');
+  iframe.src=s.url;
+  iframe.style.width='0'; 
+  iframe.style.height='0'; 
+  iframe.style.opacity='0'; 
+  iframe.style.position='absolute';
+  // If iframe fails to load (cross-origin or offline), mark offline
+  iframe.onerror=()=>{ markOffline(s); };
+  document.getElementById('iframeContainer').appendChild(iframe);
+});
 
-    function loadIframe() {
-      if (embeddedUrl) {
-        if (isBlocked(embeddedUrl)) {
-          iframe.src = "https://starship.global.ssl.fastly.net/";
-        } else {
-          iframe.src = "https://starship.global.ssl.fastly.net/";
-        }
-      }
-    }
+// Login
+document.getElementById('playBtn').addEventListener('click',()=>{
+  const val=document.getElementById('pswd').value;
+  const msg=document.getElementById('message');
+  if(val!=='hello'){msg.textContent='Wrong access code!';msg.className='error mt-4 text-lg font-bold';msg.style.display='block';return;}
+  document.getElementById('loginDiv').style.display='none';
+  document.getElementById('loadingScreen').style.display='flex';
+  setTimeout(()=>{
+    document.getElementById('loadingScreen').style.display='none';
+    document.getElementById('serverModal').classList.add('show');
+  },1500);
+});
 
-    iframe.onload = function () {
-      try {
-        const iframeDocument = iframe.contentDocument || iframe.contentWindow.document;
-        if (iframeDocument.body.innerText.includes("Cannot GET")) {
-          handleIframeError();
-        }
-      } catch (e) {
-        handleIframeError();
-      }
-    };
+// Server selection
+document.querySelectorAll('.server-option').forEach(option=>{
+  option.addEventListener('click',()=>{
+    if(option.classList.contains('offline')){alert('Server is offline!');return;}
+    loadServer(option.dataset.url);
+  });
+});
 
-    iframe.onerror = function () {
-      handleIframeError();
-    };
+// Load server
+function loadServer(url){
+  const iframe=document.createElement('iframe');
+  iframe.src=url;
+  iframe.style.width='100%'; iframe.style.height='100%';
+  iframe.style.border='0'; iframe.style.position='fixed'; iframe.style.top='0'; iframe.style.left='0'; iframe.style.zIndex='200';
+  document.getElementById('iframeOverlay').innerHTML='';
+  document.getElementById('iframeOverlay').appendChild(iframe);
+  document.getElementById('iframeOverlay').style.display='block';
+  document.getElementById('serverModal').classList.remove('show');
+  document.getElementById('topbar').style.display='flex';
+}
 
-    function confirmExit() {
-      const confirmation = confirm("Are you sure you want to activate Emergency Redirect?\nGame progress may be lost.");
-      if (confirmation) {
-        window.location.href = "https://classroom.google.com";
-      }
-    }
+// Topbar dropdown
+const serverBtn=document.getElementById('serverBtn');
+const serverDropdown=document.getElementById('serverDropdown');
+serverBtn.addEventListener('click',()=>serverDropdown.style.display=serverDropdown.style.display==='flex'?'none':'flex');
 
-    document.getElementById('fullscreenBtn').addEventListener('click', () => {
-      if (iframe.requestFullscreen) iframe.requestFullscreen();
-      else if (iframe.mozRequestFullScreen) iframe.mozRequestFullScreen();
-      else if (iframe.webkitRequestFullscreen) iframe.webkitRequestFullscreen();
-      else if (iframe.msRequestFullscreen) iframe.msRequestFullscreen();
-    });
-
-    document.getElementById('refreshBtn').addEventListener('click', () => {
-      iframe.contentWindow.location.reload();
-    });
-
-    document.getElementById('dangerBtn').addEventListener('click', () => {
-      confirmExit();
-    });
-  </script>
-
-  <script src="js/2cd4f3f683cfe8d1431755e9ef6782f4.js"></script>
+document.querySelectorAll('.serverOption').forEach((el,idx)=>{
+  el.addEventListener('click',()=>loadServer(servers[idx].url));
+});
+</script>
 </body>
 </html>
